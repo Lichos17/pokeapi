@@ -9,8 +9,6 @@ export const getPokemons = (page = 0) => {
       const data = await resp.json();
       console.log(data);
       dispatch(setPokemons({ pokemons: data.results, page: page + 1 }));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 };
