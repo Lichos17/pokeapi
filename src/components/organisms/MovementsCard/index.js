@@ -1,0 +1,1 @@
+export { MovementsCard } from "./MovementsCard";
