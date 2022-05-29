@@ -1,0 +1,1 @@
+export { getSizeText } from "./getSizeText";
