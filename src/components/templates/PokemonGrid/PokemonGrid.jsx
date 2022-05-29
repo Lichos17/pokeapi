@@ -1,40 +1,22 @@
 import React from "react";
 import { Text } from "../../atoms";
 import { Pagination, PokemonCard } from "../../molecules";
-import { Filters, TableBody, TableHead } from "../../organisms";
 import { Container, Grid } from "../../UI-utils";
 
-export const PokemonGrid = () => {
+export const PokemonGrid = ({ title, Filters, Body }) => {
   return (
     <Container>
       <Text as="h1" size="lg" extendedStyles="margin: 2rem 0;">
-        Pokédex
+        {title}
       </Text>
       <Filters />
-      <Grid>
-        <PokemonCard
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg"
-          abilities={["Habilidad", "Habilidad", "Habilidad"]}
-          types={["Tipo", "Tipo"]}
-          pokemonName="Lichonsky"
-        />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard pokemonName="Lichonsky" />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-      </Grid>
+      <Body />
     </Container>
   );
+};
+
+PokemonGrid.propTypes = {
+  title: Proptypes.string.isRequired,
+  Filters: Proptypes.func.isRequired,
+  Body: Proptypes.func.isRequired,
 };

@@ -6,6 +6,8 @@ export const Flex = styled.div`
   justify-content: ${(props) => props.justifyContent};
   align-items: ${(props) => props.alignItems};
 
+  ${(props) =>
+    props.direction && props.direction === "column" && "flex-direction: column"}
   ${(props) => props.flexGrow && `flex-grow: ${props.flexGrow}`}
   ${(props) => props.extendedStyles && props.extendedStyles}
 `;
@@ -19,5 +21,6 @@ Flex.propTypes = {
   justifyContent: PropTypes.string.isRequired,
   alignItems: PropTypes.string.isRequired,
   flexGrow: PropTypes.string,
+  direction: PropTypes.string,
   extendedStyles: PropTypes.string,
 };

@@ -12,10 +12,10 @@ export const Filters = () => {
       </InputContainer>
       <Flex>
         <Button size="md" buttonType="primaryButton">
-          Hola
+          Grid
         </Button>
         <Button size="md" buttonType="secondaryButton">
-          Hola
+          Table
         </Button>
       </Flex>
     </Flex>

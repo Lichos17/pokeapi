@@ -40,13 +40,13 @@ export const PokemonModal = () => {
             <InfoCard
               type1="Tipo"
               type2="Tipo"
-              description="Hola "
+              description="Test"
               name="Pikachu"
             />
             <InfoCard
               type1="Tipo"
               type2="Tipo"
-              description="Hola "
+              description="Test"
               name="Pikachu"
             />
           </Flex>
