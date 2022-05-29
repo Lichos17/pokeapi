@@ -1,34 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./assets/globalStyles";
-import { lightTheme, darkTheme } from "./assets/theme";
-import { MainRouter } from "./routers/AppRouter";
+import { lightTheme } from "./assets/theme";
 import { getPokemons } from "./slices/pokemonSlice/thunk";
+import "./global.css";
+import { Filters, PokemonCard, PokemonGrid, PokemonTable } from "./components";
 
 function App() {
-  const [theme, setTheme] = useState("light");
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
-
-  const dispatch = useDispatch();
-
-  const state = useSelector((state) => state);
-  console.log(state);
-
-  useEffect(() => {
-    console.log("hola");
-    dispatch(getPokemons());
-  }, []);
-
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={lightTheme}>
       <>
         <GlobalStyles />
-        <div className="App">
-          <button onClick={themeToggler}>Switch Theme</button>
-        </div>
+        <PokemonTable
+          title={"Pokemon"}
+          Filters={<Filters />}
+          Body={<h1>hola</h1>}
+        />
       </>
     </ThemeProvider>
   );
