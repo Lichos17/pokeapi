@@ -6,6 +6,7 @@ import {
   getPokemons,
   pokemonSlice,
   setGrid,
+  setInitialState,
   setPage,
   setPokemons,
   setSearch,
@@ -14,18 +15,16 @@ import {
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 export const Filters = () => {
-  const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const { light, grid } = useSelector((state) => state.ui);
+  const { search } = useSelector((state) => state.pokemons);
 
   const handleChangeTheme = () => {
     dispatch(setTheme({ theme: !light }));
   };
 
   const handleDisplayFormatChange = (isGrid) => {
-    dispatch(setPokemons({ ...pokemonSlice.getInitialState() }));
-    dispatch(setSearch({ search: "" }));
+    dispatch(setInitialState());
     dispatch(getPokemons());
     dispatch(setGrid({ grid: isGrid }));
   };
@@ -40,7 +39,11 @@ export const Filters = () => {
     <Flex as="nav" extendedStyles="margin-bottom: 1rem;">
       <InputContainer>
         <InputIcon className="fas fa-search" />
-        <Input onChange={handleInputChange} placeholder="Buscar Pokemon" />
+        <Input
+          value={search}
+          onChange={handleInputChange}
+          placeholder="Buscar Pokemon"
+        />
       </InputContainer>
       <Flex>
         <Button

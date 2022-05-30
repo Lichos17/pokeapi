@@ -8,7 +8,7 @@ function paginate(array, page_size, page_number, length) {
 export const getPokemons = (page = 1) => {
   return async (dispatch, getState) => {
     try {
-      const { pokemons } = getState();
+      const { pokemons, ui } = getState();
       const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=2000`);
       const data = await resp.json();
       const filteredNames = data.results.filter((pokemon) => {
@@ -32,11 +32,17 @@ export const getPokemons = (page = 1) => {
       });
 
       const results = await Promise.all(promises);
-      dispatch(
-        setPokemons({
-          pokemons: [...pokemons.pokemons, ...results],
-        })
-      );
+      console.log(page, results);
+
+      if (ui.grid) {
+        dispatch(
+          setPokemons({
+            pokemons: [...pokemons.pokemons, ...results],
+          })
+        );
+      } else {
+        dispatch(setPokemons({ pokemons: [...results] }));
+      }
     } catch (err) {}
   };
 };

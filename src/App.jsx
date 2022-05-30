@@ -13,8 +13,6 @@ import { useParams, useSearchParams } from "react-router-dom";
 function App() {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-  const search = searchParams.get("search");
-  const page = searchParams.get("page");
 
   const { light } = useSelector((state) => state.ui);
 

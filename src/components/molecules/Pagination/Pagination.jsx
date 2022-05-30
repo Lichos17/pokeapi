@@ -33,16 +33,20 @@ export const Pagination = ({ currentPage, pages, extendedStyles }) => {
   return (
     <PaginationContainer extendedStyles={extendedStyles}>
       {pages &&
-        Array.from(Array(10).keys()).map((page) => (
-          <Button
-            onClick={() => handleNavigationPage(page + currentPage)}
-            key={page + currentPage}
-            size="xs"
-            buttonType="navButton"
-          >
-            {currentPage + page}
-          </Button>
-        ))}
+        Array.from(Array(10).keys()).map((page) => {
+          if (page + currentPage - 1 > 0 && page + currentPage - 1 <= pages) {
+            return (
+              <Button
+                onClick={() => handleNavigationPage(page + currentPage - 1)}
+                key={page + currentPage - 1}
+                size="xs"
+                buttonType="navButton"
+              >
+                {currentPage + page - 1}
+              </Button>
+            );
+          }
+        })}
     </PaginationContainer>
   );
 };

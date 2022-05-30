@@ -28,6 +28,13 @@ export const pokemonSlice = createSlice({
     setLimit: (state, action) => {
       state.limit = action.payload.limit;
     },
+    setInitialState: (state, action) => {
+      state.pokemons = [];
+      state.search = "";
+      state.limit = 9;
+      state.page = 1;
+      state.pages = 0;
+    },
   },
 });
 
@@ -38,6 +45,7 @@ export const {
   setPages,
   setSearch,
   setLimit,
+  setInitialState,
 } = pokemonSlice.actions;
 
 const initialState = pokemonSlice.getInitialState();

@@ -25,7 +25,6 @@ export const Dashboard = () => {
   const debounceHandleNextPage = useCallback(
     debounce(() => {
       // dispatch(setLimit({ limit: 9 + limit }));
-      console.log(pokemons.page);
       dispatch(getPokemons(pokemons.page + 1));
     }, 1000),
     [dispatch, limit, pokemons.page]
