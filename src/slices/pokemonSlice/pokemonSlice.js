@@ -4,18 +4,48 @@ export const pokemonSlice = createSlice({
   name: "pokemons",
   initialState: {
     pokemons: [],
-    isLoading: false,
-    page: 0,
+    search: "",
+    page: 1,
+    pages: 0,
+    limit: 9,
   },
   reducers: {
-    startLoading: (state) => {
-      state.isLoading = true;
-    },
+    // startLoading: (state) => {
+    //   state.isLoading = true;
+    // },
     setPokemons: (state, action) => {
-      state.isLoading = false;
       state.pokemons = action.payload.pokemons;
+    },
+    setPage: (state, action) => {
+      state.page = action.payload.page;
+    },
+    setSearch: (state, action) => {
+      state.search = action.payload.search;
+    },
+    setPages: (state, action) => {
+      state.pages = action.payload.pages;
+    },
+    setLimit: (state, action) => {
+      state.limit = action.payload.limit;
+    },
+    setInitialState: (state, action) => {
+      state.pokemons = [];
+      state.search = "";
+      state.limit = 9;
+      state.page = 1;
+      state.pages = 0;
     },
   },
 });
 
-export const { startLoading, setPokemons } = pokemonSlice.actions;
+export const {
+  startLoading,
+  setPokemons,
+  setPage,
+  setPages,
+  setSearch,
+  setLimit,
+  setInitialState,
+} = pokemonSlice.actions;
+
+const initialState = pokemonSlice.getInitialState();

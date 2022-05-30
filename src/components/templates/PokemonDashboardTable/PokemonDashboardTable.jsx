@@ -4,10 +4,10 @@ import { Pagination, PokemonCard } from "../../molecules";
 import { Container, Grid } from "../../UI-utils";
 import PropTypes from "prop-types";
 
-export const PokemonDashboard = ({ title, Filters, children }) => {
+export const PokemonDashboardTable = ({ title, Filters, children }) => {
   return (
     <Container extendedStyles="display: flex; flex-direction: column;">
-      <Text as="h1" size="lg" extendedStyles="margin: 2rem 0;">
+      <Text weight="bold" as="h1" size="lg" extendedStyles="margin: 2rem 0;">
         {title}
       </Text>
       {Filters}
@@ -16,7 +16,7 @@ export const PokemonDashboard = ({ title, Filters, children }) => {
   );
 };
 
-PokemonDashboard.propTypes = {
+PokemonDashboardTable.propTypes = {
   title: PropTypes.string.isRequired,
   Filters: PropTypes.object.isRequired,
   children: PropTypes.object.isRequired,

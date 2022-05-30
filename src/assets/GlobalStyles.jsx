@@ -4,4 +4,6 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.body};
     font-family: Arial, Verdana, Helvetica;
     margin: 0;
+
+    transition: background .3s;
   }`;

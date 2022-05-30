@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { TableItem } from "../../atoms";
+import PropTypes from "prop-types";
 import { TableBodyItems } from "../../molecules";
 
 const TableBodyContainer = styled.tbody`
@@ -10,18 +12,22 @@ const TableBodyContainer = styled.tbody`
   }
 `;
 
-export const TableBody = () => {
+export const TableBody = ({ pokemons }) => {
   return (
     <TableBodyContainer>
-      <TableBodyItems
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg"
-        abilities={["Habilidad", "Habilidad", "Habilidad"]}
-        types={["Tipo", "Tipo"]}
-        pokemonName="Lichonsky"
-      />
-      <TableBodyItems />
-      <TableBodyItems />
-      <TableBodyItems />
+      {pokemons.map((pokemon) => (
+        <TableBodyItems
+          key={pokemon.name}
+          pokemonName={pokemon.name}
+          abilities={pokemon.abilities}
+          types={pokemon.types}
+          src={pokemon.sprites.front_default}
+        />
+      ))}
     </TableBodyContainer>
   );
+};
+
+TableBody.propTypes = {
+  pokemons: PropTypes.arrayOf(PropTypes.object),
 };
