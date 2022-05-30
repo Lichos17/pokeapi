@@ -2,7 +2,7 @@ import React from "react";
 import { Text } from "../../atoms";
 import { Pagination } from "../../molecules";
 import { Container } from "../../UI-utils";
-import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const PokemonTable = ({ title, Filters, Body }) => {
   return (
@@ -18,7 +18,7 @@ export const PokemonTable = ({ title, Filters, Body }) => {
 };
 
 PokemonTable.propTypes = {
-  title: Proptypes.string.isRequired,
-  Filters: Proptypes.func.isRequired,
-  Body: Proptypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  Filters: PropTypes.func.isRequired,
+  Body: PropTypes.func.isRequired,
 };

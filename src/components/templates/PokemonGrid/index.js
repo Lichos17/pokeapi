@@ -1,1 +1,0 @@
-export { PokemonGrid } from "./PokemonGrid";

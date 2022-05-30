@@ -4,20 +4,20 @@ import { Pagination, PokemonCard } from "../../molecules";
 import { Container, Grid } from "../../UI-utils";
 import PropTypes from "prop-types";
 
-export const PokemonGrid = ({ title, Filters, Body }) => {
+export const PokemonDashboard = ({ title, Filters, children }) => {
   return (
-    <Container>
+    <Container extendedStyles="display: flex; flex-direction: column;">
       <Text as="h1" size="lg" extendedStyles="margin: 2rem 0;">
         {title}
       </Text>
       {Filters}
-      {Body}
+      {children}
     </Container>
   );
 };
 
-PokemonGrid.propTypes = {
+PokemonDashboard.propTypes = {
   title: PropTypes.string.isRequired,
-  Filters: PropTypes.func.isRequired,
-  Body: PropTypes.func.isRequired,
+  Filters: PropTypes.object.isRequired,
+  children: PropTypes.object.isRequired,
 };

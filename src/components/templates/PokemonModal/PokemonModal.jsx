@@ -4,6 +4,7 @@ import { useTheme } from "styled-components";
 import { InfoCard } from "../../molecules";
 import { Carousel, MovementsCard } from "../../organisms";
 import { Flex } from "../../UI-utils";
+import PropTypes from "prop-types";
 
 const customStyles = (theme) => ({
   content: {
@@ -19,7 +20,7 @@ const customStyles = (theme) => ({
   },
 });
 
-export const PokemonModal = () => {
+export const PokemonModal = ({ firstColumn, secondColumn }) => {
   const theme = useTheme();
 
   const styles = customStyles(theme);
@@ -37,22 +38,18 @@ export const PokemonModal = () => {
         <Flex extendedStyles="align-items: stretch; justify-content: space-between;">
           <Flex extendedStyles="flex-direction:column; justify-content: stretch; width: 70%;">
             {/* {/* <InfoCard /> */}
-            <InfoCard
-              type1="Tipo"
-              type2="Tipo"
-              description="Test"
-              name="Pikachu"
-            />
-            <InfoCard
-              type1="Tipo"
-              type2="Tipo"
-              description="Test"
-              name="Pikachu"
-            />
+
+            {firstColumn}
           </Flex>
-          <MovementsCard />
+          {/* <MovementsCard /> */}
+          {secondColumn}
         </Flex>
       </div>
     </Modal>
   );
+};
+
+PokemonModal.propTypes = {
+  firstColumn: PropTypes.string.isRequired,
+  secondColumn: PropTypes.object.isRequired,
 };

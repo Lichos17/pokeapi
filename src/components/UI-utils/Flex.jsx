@@ -6,8 +6,9 @@ export const Flex = styled.div`
   justify-content: ${(props) => props.justifyContent};
   align-items: ${(props) => props.alignItems};
 
-  ${(props) => props.flexGrow && `flex-grow: ${props.flexGrow}`}
-  ${(props) => props.extendedStyles && props.extendedStyles}
+  ${(props) => props.flexDirection && `flex-direction: ${props.flexDirection}`};
+  ${(props) => props.flexGrow && `flex-grow: ${props.flexGrow}`};
+  ${(props) => props.extendedStyles && props.extendedStyles};
 `;
 
 Flex.defaultProps = {
@@ -19,5 +20,6 @@ Flex.propTypes = {
   justifyContent: PropTypes.string.isRequired,
   alignItems: PropTypes.string.isRequired,
   flexGrow: PropTypes.string,
+  flexDirection: PropTypes.string,
   extendedStyles: PropTypes.string,
 };
