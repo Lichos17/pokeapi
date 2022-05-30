@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Image, Text } from "../../atoms";
-import { Flex } from "../../UI-utils";
+import { Flex, Grid } from "../../UI-utils";
 import PropTypes from "prop-types";
 
 const CardContainer = styled.div`
@@ -16,28 +16,41 @@ const CardContainer = styled.div`
   }
 `;
 
-export const PokemonCard = ({ src, alt, pokemonName, abilities, types }) => {
+export const PokemonCard = ({ src, pokemonName, abilities, types }) => {
   return (
     <CardContainer as="article">
-      <Image src={src} alt={alt} />
+      <Image src={src} alt={`${pokemonName} photo`} />
       <Text as="h3" size="md">
         {pokemonName}
       </Text>
       {abilities && (
-        <Flex>
+        <Grid
+          extendedStyles="grid-template-columns: repeat(3, 1fr);"
+          justifyContent="center"
+          alignItems="center"
+        >
           {abilities.map((ability) => (
-            <Text key={ability} as="p" size="sm">
-              {ability}
+            <Text
+              extendedStyles="flex-grow: 1; text-align:left;"
+              key={ability?.ability?.name}
+              as="p"
+              size="sm"
+            >
+              {ability?.ability?.name}
             </Text>
           ))}
-        </Flex>
+        </Grid>
       )}
       <Flex justifyContent="space-between" alignItems="center">
         <Flex>
           {types &&
             types.map((type) => (
-              <Text key={type} extendedStyles="margin-right: 2rem;" size="sm">
-                {type}
+              <Text
+                key={type?.type?.name}
+                extendedStyles="margin-right: 2rem;"
+                size="sm"
+              >
+                {type?.type?.name}
               </Text>
             ))}
         </Flex>
@@ -63,6 +76,6 @@ PokemonCard.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   pokemonName: PropTypes.string.isRequired,
-  abilities: PropTypes.arrayOf(PropTypes.string),
-  types: PropTypes.arrayOf(PropTypes.string),
+  abilities: PropTypes.arrayOf(PropTypes.object),
+  types: PropTypes.arrayOf(PropTypes.object),
 };

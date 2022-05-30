@@ -19,21 +19,25 @@ export const TableBodyItems = ({ src, alt, pokemonName, abilities, types }) => {
       <TableItem>
         {types &&
           types.map((type) => (
-            <Text key={type} as="p" size="sm">
-              {type}
+            <Text key={type?.type?.name} as="p" size="sm">
+              {type?.type?.name}
             </Text>
           ))}
       </TableItem>
       <TableItem>
         {abilities &&
           abilities.map((ability) => (
-            <Text key={ability} as="p" size="sm">
-              {ability}
+            <Text key={ability?.ability?.name} as="p" size="sm">
+              {ability?.ability?.name}
             </Text>
           ))}
       </TableItem>
-      <TableItem>
-        <Button buttonType="primaryButton" size="md">
+      <TableItem extendedStyles="text-align: center;">
+        <Button
+          extendedStyles="margin: 0 auto;"
+          buttonType="primaryButton"
+          size="sm"
+        >
           Shiny
         </Button>
       </TableItem>
@@ -51,6 +55,6 @@ TableBodyItems.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   pokemonName: PropTypes.string.isRequired,
-  abilities: PropTypes.arrayOf(PropTypes.string),
-  types: PropTypes.arrayOf(PropTypes.string),
+  abilities: PropTypes.arrayOf(PropTypes.object),
+  types: PropTypes.arrayOf(PropTypes.object),
 };

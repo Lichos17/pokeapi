@@ -2,6 +2,9 @@ import React from "react";
 import styledComponents from "styled-components";
 import { Button } from "../../atoms";
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { createSearchParams, useNavigate } from "react-router-dom";
+import { setPage } from "../../../slices";
 
 const PaginationContainer = styledComponents.div`
   display: flex;
@@ -20,13 +23,28 @@ const PaginationContainer = styledComponents.div`
   }
 `;
 
-export const Pagination = ({ pages, extendedStyles }) => {
+export const Pagination = ({ currentPage, pages, extendedStyles }) => {
+  const navigate = useNavigate();
+  const handleNavigationPage = (page) => {
+    navigate({
+      pathname: "/",
+      search: createSearchParams({
+        page: page,
+      }).toString(),
+    });
+  };
+
   return (
     <PaginationContainer extendedStyles={extendedStyles}>
       {pages &&
-        Array.from(Array(pages).keys()).map((page) => (
-          <Button key={page} size="xs" buttonType="navButton">
-            {page + 1}
+        Array.from(Array(10).keys()).map((page) => (
+          <Button
+            onClick={() => handleNavigationPage(page + currentPage)}
+            key={page + currentPage}
+            size="xs"
+            buttonType="navButton"
+          >
+            {currentPage + page}
           </Button>
         ))}
     </PaginationContainer>
@@ -38,6 +56,7 @@ Pagination.defaultProps = {
 };
 
 Pagination.propTypes = {
+  currentPage: PropTypes.number,
   extendedStyles: PropTypes.string,
   pages: PropTypes.number,
 };

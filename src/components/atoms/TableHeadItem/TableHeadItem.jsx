@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const TableHeadItem = styled.th`
   text-align: left;
   padding: 3rem 0;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1rem;
   border-bottom: 1px solid ${(props) => props.theme.table.borders};
   border-top: 1px solid ${(props) => props.theme.table.borders};

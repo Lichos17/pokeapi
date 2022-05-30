@@ -42,15 +42,15 @@ export const Button = styled.a`
 
   ${(props) => {
     if (props.size === "xs")
-      return "width:2rem; height: 2rem; font-size: 0.8rem;";
+      return "width:1rem; height: 2rem; font-size: 0.8rem; padding: 0 0.5rem;";
     if (props.size === "sm")
-      return "width:5rem;height: 2.5rem; font-size: 0.6rem;";
+      return "width:3rem;height: 2rem; font-size: 0.7rem; padding: 0 1rem; ";
     if (props.size === "md")
-      return "width: 12rem;height: 3rem; font-size: 0.6rem;";
+      return "width: 10rem;height: 2.5rem; font-size: 0.6rem; padding: 0 1rem;";
     if (props.size === "lg")
-      return "width: 16rem;height: 3rem; font-size: 0.8rem;";
+      return "width: 14rem;height: 3rem; font-size: 0.8rem; padding: 0 1rem;";
     if (props.size === "xl")
-      return "width: 20rem;height: 3rem; font-size: 1.2rem;";
+      return "width: 18rem;height: 3rem; font-size: 1.2rem; padding: 0 0.5rem;";
   }}
 
   font-weight: ${(props) => (props.weight === "bold" ? "700" : "400")};
