@@ -1,1 +1,1 @@
-export { PokemonDashboard } from "./PokemonDashboard";
+export { PokemonDashboard } from "./PokemonDashboardGrid";

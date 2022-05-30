@@ -9,13 +9,11 @@ import { Signup } from "./components/pages/Signup/Signup";
 import { useDispatch, useSelector } from "react-redux";
 import { setPokemons } from "./slices";
 import { useParams, useSearchParams } from "react-router-dom";
+import { MainRouter } from "./routers/AppRouter";
 
 function App() {
   const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
-
   const { light } = useSelector((state) => state.ui);
-
   useEffect(() => {
     dispatch(getPokemons());
   }, []);
@@ -25,7 +23,7 @@ function App() {
       <>
         <GlobalStyles />
         {/* <Login /> */}
-        <Dashboard />
+        <MainRouter />
         {/* <PokemonId /> */}
         {/* <Signup /> */}
       </>

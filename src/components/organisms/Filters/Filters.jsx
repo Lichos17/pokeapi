@@ -12,8 +12,6 @@ import {
   setSearch,
   setTheme,
 } from "../../../slices";
-import { createSearchParams, useNavigate } from "react-router-dom";
-
 export const Filters = () => {
   const dispatch = useDispatch();
   const { light, grid } = useSelector((state) => state.ui);

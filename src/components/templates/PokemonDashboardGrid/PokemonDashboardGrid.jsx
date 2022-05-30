@@ -1,21 +1,17 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Text } from "../../atoms";
-import { Container } from "../../UI-utils";
+import { Container, Grid } from "../../UI-utils";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../../../slices";
 import debounce from "just-debounce-it";
+import { useNearScreen } from "../../../hooks";
 
 export const PokemonDashboardGrid = ({ title, Filters, children }) => {
-  const {
-    ui: { grid },
-    filters,
-    pokemons,
-  } = useSelector((state) => state);
+  const { pokemons } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { limit } = useSelector((state) => state.pokemons);
-  const { loading, setLoading } = useState(false);
   const externalRef = useRef();
+  const [loading, setLoading] = useState(false);
   const { isNearScreen } = useNearScreen({
     externalRef: loading ? null : externalRef,
     once: false,
@@ -26,7 +22,7 @@ export const PokemonDashboardGrid = ({ title, Filters, children }) => {
       // dispatch(setLimit({ limit: 9 + limit }));
       dispatch(getPokemons(pokemons.page + 1));
     }, 1000),
-    [dispatch, limit, pokemons.page]
+    [dispatch, pokemons.page]
   );
 
   useEffect(
@@ -42,7 +38,7 @@ export const PokemonDashboardGrid = ({ title, Filters, children }) => {
         {title}
       </Text>
       {Filters}
-      {children}
+      <Grid>{children}</Grid>
       <div id="visor" ref={externalRef}></div>
     </Container>
   );
@@ -51,5 +47,5 @@ export const PokemonDashboardGrid = ({ title, Filters, children }) => {
 PokemonDashboardGrid.propTypes = {
   title: PropTypes.string.isRequired,
   Filters: PropTypes.object.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
