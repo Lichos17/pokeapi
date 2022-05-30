@@ -26,7 +26,7 @@ export const Dashboard = () => {
     debounce(() => {
       dispatch(setLimit({ limit: 9 + limit }));
       dispatch(getPokemons());
-    }, 200),
+    }, 1000),
     [dispatch, limit]
   );
 
