@@ -2,7 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Input, InputContainer, InputIcon } from "../../atoms";
 import { Flex } from "../../UI-utils";
-import { setGrid, setPage, setSearch, setTheme } from "../../../slices";
+import {
+  getPokemons,
+  pokemonSlice,
+  setGrid,
+  setPage,
+  setPokemons,
+  setSearch,
+  setTheme,
+} from "../../../slices";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 export const Filters = () => {
@@ -15,23 +23,17 @@ export const Filters = () => {
     dispatch(setTheme({ theme: !light }));
   };
 
-  const handleGridChange = () => {
-    dispatch(setGrid({ grid: true }));
-  };
-  const handleTableChange = () => {
-    dispatch(setGrid({ grid: false }));
+  const handleDisplayFormatChange = (isGrid) => {
+    dispatch(setPokemons({ ...pokemonSlice.getInitialState() }));
+    dispatch(setSearch({ search: "" }));
+    dispatch(getPokemons());
+    dispatch(setGrid({ grid: isGrid }));
   };
 
   const handleInputChange = (e) => {
-    navigate({
-      pathname: "/",
-      search: createSearchParams({
-        search: e.target.value,
-      }).toString(),
-      page: 0,
-    });
-
+    dispatch(setPokemons({ ...pokemonSlice.getInitialState() }));
     dispatch(setSearch({ search: e.target.value }));
+    dispatch(getPokemons());
   };
 
   return (
@@ -46,7 +48,7 @@ export const Filters = () => {
           extendedStyles=""
           size="sm"
           buttonType={!grid ? "secondaryButton" : "primaryButton"}
-          onClick={handleGridChange}
+          onClick={() => handleDisplayFormatChange(true)}
         >
           Cuadricula
         </Button>
@@ -55,7 +57,7 @@ export const Filters = () => {
           extendedStyles=""
           size="sm"
           buttonType={grid ? "secondaryButton" : "primaryButton"}
-          onClick={handleTableChange}
+          onClick={() => handleDisplayFormatChange(false)}
         >
           Lista
         </Button>

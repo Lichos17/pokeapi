@@ -13,7 +13,6 @@ const TableBodyContainer = styled.tbody`
 `;
 
 export const TableBody = ({ pokemons }) => {
-  console.log(pokemons);
   return (
     <TableBodyContainer>
       {pokemons.map((pokemon) => (

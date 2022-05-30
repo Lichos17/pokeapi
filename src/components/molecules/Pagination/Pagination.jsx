@@ -4,7 +4,7 @@ import { Button } from "../../atoms";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { createSearchParams, useNavigate } from "react-router-dom";
-import { setPage } from "../../../slices";
+import { getPokemons, setPage } from "../../../slices";
 
 const PaginationContainer = styledComponents.div`
   display: flex;
@@ -25,13 +25,9 @@ const PaginationContainer = styledComponents.div`
 
 export const Pagination = ({ currentPage, pages, extendedStyles }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleNavigationPage = (page) => {
-    navigate({
-      pathname: "/",
-      search: createSearchParams({
-        page: page,
-      }).toString(),
-    });
+    dispatch(getPokemons(page));
   };
 
   return (

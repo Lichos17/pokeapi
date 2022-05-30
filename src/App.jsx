@@ -19,12 +19,8 @@ function App() {
   const { light } = useSelector((state) => state.ui);
 
   useEffect(() => {
-    dispatch(
-      getPokemons(
-        !isNaN(parseInt(page)) && parseInt(page) > 0 ? parseInt(page) : 1
-      )
-    );
-  }, [search, page]);
+    dispatch(getPokemons());
+  }, []);
 
   return (
     <ThemeProvider theme={light ? lightTheme : darkTheme}>

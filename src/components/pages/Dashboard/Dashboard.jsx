@@ -24,10 +24,11 @@ export const Dashboard = () => {
 
   const debounceHandleNextPage = useCallback(
     debounce(() => {
-      dispatch(setLimit({ limit: 9 + limit }));
-      dispatch(getPokemons());
+      // dispatch(setLimit({ limit: 9 + limit }));
+      console.log(pokemons.page);
+      dispatch(getPokemons(pokemons.page + 1));
     }, 1000),
-    [dispatch, limit]
+    [dispatch, limit, pokemons.page]
   );
 
   useEffect(
@@ -65,15 +66,6 @@ export const Dashboard = () => {
           />
         </>
       )}
-
-      {/* <table>
-        <TableHead />
-        <TableBody />
-      </table>
-      <Pagination
-        pages={10}
-        extendedStyles="margin-top: 2rem; align-self:center;"
-      /> */}
     </PokemonDashboard>
   );
 };
