@@ -11,10 +11,10 @@ export const Filters = () => {
         <Input placeholder="Buscar Pokemon" />
       </InputContainer>
       <Flex>
-        <Button size="md" buttonType="primaryButton">
+        <Button size="sm" buttonType="primaryButton">
           Test
         </Button>
-        <Button size="md" buttonType="secondaryButton">
+        <Button size="sm" buttonType="secondaryButton">
           Test
         </Button>
       </Flex>

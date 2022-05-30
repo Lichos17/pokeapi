@@ -4,18 +4,18 @@ import { GlobalStyles } from "./assets/globalStyles";
 import { lightTheme } from "./assets/theme";
 import { getPokemons } from "./slices/pokemonSlice/thunk";
 import "./global.css";
-import { Filters, PokemonCard, PokemonGrid, PokemonTable } from "./components";
+import { Dashboard, PokemonId } from "./components";
+import { Signup } from "./components/pages/Signup/Signup";
 
 function App() {
   return (
     <ThemeProvider theme={lightTheme}>
       <>
         <GlobalStyles />
-        <PokemonTable
-          title={"Pokemon"}
-          Filters={<Filters />}
-          Body={<h1>hola</h1>}
-        />
+        {/* <Login /> */}
+        <Dashboard />
+        {/* <PokemonId /> */}
+        {/* <Signup /> */}
       </>
     </ThemeProvider>
   );

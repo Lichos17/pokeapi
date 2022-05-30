@@ -31,7 +31,7 @@ export const Text = styled.p`
       ? props.theme.text.primary
       : props.theme.text.secondary};
 
-  font-weight: ${(props) => (props.weight === "bold" ? "700" : "regular")};
+  font-weight: ${(props) => (props.weight === "bold" ? "700" : "400")};
 
   ${(props) => props.extendedStyles && props.extendedStyles}
 `;

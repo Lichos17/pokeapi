@@ -41,7 +41,11 @@ export const PokemonCard = ({ src, alt, pokemonName, abilities, types }) => {
               </Text>
             ))}
         </Flex>
-        <Button size="sm" buttonType="primaryButton">
+        <Button
+          extendedStyles="padding: 0 1rem;"
+          size="xs"
+          buttonType="primaryButton"
+        >
           Shiny
         </Button>
       </Flex>
