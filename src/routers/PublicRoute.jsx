@@ -1,25 +1,18 @@
 import React from "react";
-import { Routes, Route, Link, BrowserRouter, Navigate } from "react-router-dom";
-import { Login, Signup } from "../components";
 import PropTypes from "prop-types";
+import { Route, Navigate, Routes } from "react-router-dom";
+import { Login, Signup } from "../components";
 
-export const PublicRoutes = ({ isAuth }) => (
-  <Routes>
-    <Route
-      path="/login"
-      element={() =>
-        !isAuth ? <Login /> : <Navigate replace to="/dashboard" />
-      }
-    />
-    <Route
-      path="/signup"
-      element={() =>
-        !isAuth ? <Signup /> : <Navigate replace to="/dashboard" />
-      }
-    />
-    <Route path="*" element={<h1>Not Found</h1>} />
-  </Routes>
-);
+export const PublicRoutes = ({ isAuth }) => {
+  return !isAuth ? (
+    <Routes>
+      <Route path="login" element={<Login />} />
+      <Route path="signup" element={<Signup />} />
+    </Routes>
+  ) : (
+    <Navigate replace to="/dashboard" />
+  );
+};
 
 PublicRoutes.propTypes = {
   isAuth: PropTypes.bool.isRequired,

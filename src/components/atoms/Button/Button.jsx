@@ -52,7 +52,7 @@ export const Button = styled.a`
     if (props.size === "xl")
       return "width: 18rem;height: 3rem; font-size: 1.2rem; padding: 0 0.5rem;";
   }}
-
+  ${(props) => props.disabled && "opacity: 0.6; cursor: default;"}
   font-weight: ${(props) => (props.weight === "bold" ? "700" : "400")};
 
   ${(props) => props.extendedStyles && props.extendedStyles};
@@ -72,4 +72,5 @@ Button.propTypes = {
   extendedStyles: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(sizes)).isRequired,
   weight: PropTypes.oneOf(Object.keys(weights)),
+  disabled: PropTypes.bool,
 };

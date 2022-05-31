@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, setLimit, setPokemons } from "../../../slices";
 import { Pagination, PokemonCard } from "../../molecules";
 import { Filters, TableBody, TableHead } from "../../organisms";
-import { PokemonDashboard, PokemonDashboardTable } from "../../templates";
-import { Grid } from "../../UI-utils";
-import debounce from "just-debounce-it";
-import { PokemonDashboardGrid } from "../../templates/PokemonDashboardGrid/PokemonDashboardGrid";
+import { PokemonDashboardGrid, PokemonDashboardTable } from "../../templates";
 
 export const Dashboard = () => {
   const {
     ui: { grid },
     pokemons,
   } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPokemons());
+  }, []);
 
   return grid ? (
     <PokemonDashboardGrid title="Pokedex" Filters={<Filters />}>

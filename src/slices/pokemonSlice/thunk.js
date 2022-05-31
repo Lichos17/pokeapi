@@ -1,10 +1,7 @@
 import { setPokemons, setPages, setPage } from "./pokemonSlice";
 function paginate(array, page_size, page_number, length) {
-  console.log(page_number, length);
-  // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
   if (page_number > length) return [];
 
-  console.log("paso");
   return array.slice((page_number - 1) * page_size, page_number * page_size);
 }
 
@@ -35,7 +32,6 @@ export const getPokemons = (page = 1) => {
       });
 
       const results = await Promise.all(promises);
-      console.log(page, results);
 
       if (ui.grid) {
         dispatch(

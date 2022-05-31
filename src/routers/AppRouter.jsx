@@ -1,28 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
-import { Dashboard, Login, Signup } from "../components";
-import { PrivateRoute, PrivateRoutes } from "./PrivateRoute";
+import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoute";
 
 export const MainRouter = () => {
-  const [auth, setAuth] = useState(false);
-
+  const [auth, setAuth] = useState(localStorage.getItem("token") || false);
   const onClick = () => {
     setAuth(!auth);
+    localStorage.setItem("token", "1");
   };
 
   return (
     <BrowserRouter>
       <button onClick={onClick}>Oas</button>
       <Routes>
-        <PrivateRoute
-          path="dashboard"
-          isAuth={true}
-          Component={<Dashboard />}
-        />
-        <PublicRoutes path="login" isAuth={true} Component={<Login />} />
-        <PublicRoutes path="signup" isAuth={true} Component={<Signup />} />
-        <Route path="*" element={<h1>not foun</h1>} />
+        <Route path="/auth/*" element={<PublicRoutes isAuth={auth} />} />
+        <Route path="/*" element={<PrivateRoutes isAuth={auth} />} />
       </Routes>
     </BrowserRouter>
   );

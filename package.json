@@ -10,6 +10,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
     "intersection-observer": "^0.12.0",
+    "jsonwebtoken": "^8.5.1",
     "just-debounce-it": "^3.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -17,7 +18,8 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "6",
     "redux": "^4.2.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
