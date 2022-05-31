@@ -1,4 +1,11 @@
-import { setPokemons, setPages, setPage, setIsLoading } from "./pokemonSlice";
+import {
+  setPokemons,
+  setPages,
+  setPage,
+  setIsLoading,
+  pokemonSlice,
+  setSearch,
+} from "./pokemonSlice";
 function paginate(array, page_size, page_number, length) {
   if (page_number > length) return [];
 
@@ -46,6 +53,16 @@ export const getPokemons = (page = 1) => {
       }
 
       dispatch(setIsLoading({ isLoading: false }));
+    } catch (err) {}
+  };
+};
+
+export const setPokemonSearch = (value) => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(setPokemons({ ...pokemonSlice.getInitialState() }));
+      dispatch(setSearch({ search: value }));
+      dispatch(getPokemons(1));
     } catch (err) {}
   };
 };

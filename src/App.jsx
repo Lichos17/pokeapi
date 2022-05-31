@@ -10,13 +10,8 @@ function App() {
   const { light } = useSelector((state) => state.ui);
   return (
     <ThemeProvider theme={light ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles />
-        {/* <Login /> */}
-        <MainRouter />
-        {/* <PokemonId /> */}
-        {/* <Signup /> */}
-      </>
+      <GlobalStyles />
+      <MainRouter />
     </ThemeProvider>
   );
 }

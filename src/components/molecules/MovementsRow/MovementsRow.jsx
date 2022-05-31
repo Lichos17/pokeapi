@@ -1,21 +1,11 @@
 import React from "react";
-import styledComponents from "styled-components";
+
 import { Text } from "../../atoms";
-import { Flex } from "../../UI-utils";
-
-export const MovementRowContainer = styledComponents.div`
-  margin: 1rem 0;
-  padding: 1rem 0;
-
-
-  &:not(:last-of-type){
-    border-bottom: 1px solid ${(props) => props.theme.pallete.tertiary};
-  }
-`;
+import { Flex, MovementsRowContainer } from "../../UI-utils";
 
 export const MovementsRow = () => {
   return (
-    <MovementRowContainer>
+    <MovementsRowContainer>
       <Text extendedStyles="margin-bottom: 1rem;" size="sm" weight="bold">
         Movimiento 1
       </Text>
@@ -45,6 +35,6 @@ export const MovementsRow = () => {
           </Text>
         </div>
       </Flex>
-    </MovementRowContainer>
+    </MovementsRowContainer>
   );
 };

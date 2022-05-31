@@ -1,23 +1,8 @@
 import React from "react";
-import styledComponents from "styled-components";
 import PropTypes from "prop-types";
 
 import { Text } from "../../atoms";
-import { Flex } from "../../UI-utils";
-
-export const InfoCardContainer = styledComponents.article`
-  border: 1px solid #47525E;
-  padding: 1.5rem;
-  height: 100%;
-  width: 100%;
-  background-color: ${(props) => props.theme.card.bg};
-  border: 1px solid ${(props) => props.theme.card.borders};
-  
-
-  &:not(:last-child){
-    margin-bottom: 1rem;
-  }
-`;
+import { Flex, InfoCardContainer } from "../../UI-utils";
 
 export const InfoCard = ({ name, types, children }) => {
   return (

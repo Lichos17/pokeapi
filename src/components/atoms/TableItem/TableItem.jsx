@@ -1,7 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import { Image, Text } from "../../atoms";
-import { Flex } from "../../UI-utils";
 import PropTypes from "prop-types";
 
 export const TableItem = styled.td`

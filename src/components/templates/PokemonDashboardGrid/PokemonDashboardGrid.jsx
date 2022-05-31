@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Button, Spinner, Text } from "../../atoms";
-import { Container, Flex, Grid } from "../../UI-utils";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons } from "../../../slices";
 import debounce from "just-debounce-it";
+
+import { Spinner } from "../../atoms";
+import { Container, Grid } from "../../UI-utils";
+import { getPokemons } from "../../../slices";
 import { useNearScreen } from "../../../hooks";
 
 export const PokemonDashboardGrid = ({ title, Filters, children, Header }) => {

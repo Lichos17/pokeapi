@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Text } from "../../atoms";
+import { useDispatch } from "react-redux";
+
 import { Flex } from "../../UI-utils";
 import { removeEmailWithStorage } from "../../../slices";
-import { useDispatch } from "react-redux";
+import { Button, Text } from "../../atoms";
 
 export const Header = ({ title }) => {
   const dispatch = useDispatch();

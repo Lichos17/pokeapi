@@ -1,11 +1,11 @@
 import React from "react";
 import Modal from "react-modal";
 import { useTheme } from "styled-components";
-import { InfoCard } from "../../molecules";
-import { Carousel, MovementsCard } from "../../organisms";
-import { Flex } from "../../UI-utils";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+
+import { Carousel } from "../../organisms";
+import { Flex } from "../../UI-utils";
 
 const customStyles = (theme) => ({
   content: {

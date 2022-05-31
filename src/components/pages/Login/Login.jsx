@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
 import { useAuthForm } from "../../../hooks";
 import { setEmailWithStorage } from "../../../slices/userSlice/thunk";
 import { validateEmail, validatePassword } from "../../../utils";
-import { Button, Input, Text } from "../../atoms";
+import { Button, Input } from "../../atoms";
 import { LoginTemplate } from "../../templates";
-import { Flex } from "../../UI-utils/Flex";
 
 export const Login = () => {
   const dispatch = useDispatch();

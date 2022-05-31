@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, setPokemons } from "../../../slices";
+
+import { getPokemons } from "../../../slices";
 import { Header, Pagination, PokemonCard } from "../../molecules";
 import { Filters, TableBody, TableHead } from "../../organisms";
 import { PokemonDashboardGrid, PokemonDashboardTable } from "../../templates";
