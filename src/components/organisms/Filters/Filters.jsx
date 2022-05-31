@@ -34,17 +34,24 @@ export const Filters = () => {
   };
 
   return (
-    <Flex as="nav" extendedStyles="margin-bottom: 1rem;">
-      <InputContainer>
-        <InputIcon className="fas fa-search" />
+    <Flex
+      as="nav"
+      extendedStyles="margin-bottom: 1rem; @media(max-width:480px){flex-wrap: wrap}"
+    >
+      <InputContainer extendedStyles=" @media(max-width:480px){width: 100%;margin-bottom: 1rem; padding: 0.5rem;}">
+        <InputIcon
+          className="fas fa-search"
+          extendedStyles=" @media(max-width:480px){padding-left: 0.5rem;}"
+        />
         <Input
           valid={true}
           value={search}
           onChange={handleInputChange}
           placeholder="Buscar Pokemon"
+          extendedStyles=" @media(max-width:480px){padding: 0.8rem;}"
         />
       </InputContainer>
-      <Flex>
+      <Flex extendedStyles=" @media(max-width:480px){flex-wrap: wrap}">
         <Button
           weight="bold"
           extendedStyles=""
@@ -64,7 +71,7 @@ export const Filters = () => {
           Lista
         </Button>
         <Button
-          extendedStyles="margin-left: 1.5rem;"
+          extendedStyles="margin-left: 1.5rem; @media(max-width:480px){margin: 0;}"
           size="sm"
           buttonType="navButton"
           onClick={handleChangeTheme}

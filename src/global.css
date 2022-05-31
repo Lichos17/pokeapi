@@ -59,6 +59,25 @@ table {
   animation: sk-chase 2.5s infinite linear both;
 }
 
+
+html {
+  font-size: 100%;
+}
+@media (max-width: 760px ){
+  html{
+    font-size: 70.25%;
+  }
+}
+@media (max-width: 600px ) { 
+  html{
+    font-size: 68%; 
+  }
+}
+@media (max-width: 480px ) {
+  html{
+    font-size: 55%;
+  }
+}
 .sk-chase-dot {
   width: 100%;
   height: 100%;

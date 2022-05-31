@@ -41,8 +41,8 @@ export const PokemonModal = ({ firstColumn, secondColumn, images }) => {
     >
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <Carousel images={images} />
-        <Flex extendedStyles="align-items: stretch; justify-content: space-between;">
-          <Flex extendedStyles="flex-direction:column; justify-content: stretch; width: 70%;">
+        <Flex extendedStyles="align-items: stretch; justify-content: space-between; @media(max-width:480px){flex-wrap:wrap;}">
+          <Flex extendedStyles="flex-direction:column; justify-content: stretch; width: 70%;@media(max-width:480px){width: 100%;}">
             {firstColumn}
           </Flex>
 

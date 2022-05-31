@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Route, Navigate, Routes } from "react-router-dom";
-import { Dashboard, Login, PokemonId, Signup } from "../components";
+import { Dashboard, Login, PokemonId } from "../components";
 
 export const PrivateRoutes = ({ isAuth }) => {
   return isAuth ? (

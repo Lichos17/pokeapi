@@ -11,6 +11,8 @@ export const MovementsCardContainer = styledComponents.article`
 
   background-color: ${(props) => props.theme.card.bg};
   border: 1px solid ${(props) => props.theme.card.borders};
+
+  @media(max-width:480px){width: 100%;  margin-left: 0rem;}
 `;
 
 export const MovementsCard = () => {

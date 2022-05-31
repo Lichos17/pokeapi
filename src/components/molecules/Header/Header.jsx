@@ -13,7 +13,7 @@ export const Header = ({ title }) => {
   };
 
   return (
-    <Flex>
+    <Flex extendedStyles="@media(max-width:480px){flex-wrap: wrap-reverse;}">
       <Text weight="bold" as="h1" size="lg" extendedStyles="margin: 2rem 0;">
         {title}
       </Text>
