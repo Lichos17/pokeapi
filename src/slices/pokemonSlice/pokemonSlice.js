@@ -7,7 +7,8 @@ export const pokemonSlice = createSlice({
     search: "",
     page: 1,
     pages: 0,
-    limit: 9,
+    limit: 16,
+    isLoading: false,
   },
   reducers: {
     // startLoading: (state) => {
@@ -25,13 +26,13 @@ export const pokemonSlice = createSlice({
     setPages: (state, action) => {
       state.pages = action.payload.pages;
     },
-    setLimit: (state, action) => {
-      state.limit = action.payload.limit;
+    setIsLoading: (state, action) => {
+      state.isLoading = action.payload.isLoading;
     },
     setInitialState: (state, action) => {
       state.pokemons = [];
       state.search = "";
-      state.limit = 9;
+      state.limit = 16;
       state.page = 1;
       state.pages = 0;
     },
@@ -44,7 +45,7 @@ export const {
   setPage,
   setPages,
   setSearch,
-  setLimit,
+  setIsLoading,
   setInitialState,
 } = pokemonSlice.actions;
 

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useAuthForm } from "../../../hooks";
+import { setEmailWithStorage } from "../../../slices/userSlice/thunk";
 import { validateEmail, validatePassword } from "../../../utils";
 import { Button, Input, Text } from "../../atoms";
 import { LoginTemplate } from "../../templates";
 import { Flex } from "../../UI-utils/Flex";
-import jwt from "jsonwebtoken";
 
 export const Login = () => {
-  const { sign, verify } = jwt;
+  const dispatch = useDispatch();
+
   const {
     form: { email, password },
     handleInputChange,
@@ -26,11 +29,12 @@ export const Login = () => {
 
   const handleLogin = () => {
     if (password.isValid && email.isValid) {
+      dispatch(setEmailWithStorage(email.value));
     }
   };
 
   return (
-    <LoginTemplate title="Pokedex">
+    <LoginTemplate title="Pokédex">
       <Input
         name="email"
         value={email.value}

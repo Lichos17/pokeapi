@@ -5,6 +5,7 @@ import { InfoCard } from "../../molecules";
 import { Carousel, MovementsCard } from "../../organisms";
 import { Flex } from "../../UI-utils";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const customStyles = (theme) => ({
   content: {
@@ -20,28 +21,31 @@ const customStyles = (theme) => ({
   },
 });
 
-export const PokemonModal = ({ firstColumn, secondColumn }) => {
+export const PokemonModal = ({ firstColumn, secondColumn, images }) => {
   const theme = useTheme();
+  let navigate = useNavigate();
+
+  const handleNavigationDashboard = () => {
+    navigate(`/dashboard`);
+  };
 
   const styles = customStyles(theme);
+  Modal.setAppElement("#root");
 
   return (
     <Modal
       isOpen={true}
-      // onAfterOpen={afterOpenModal}
-      // onRequestClose={closeModal}
+      onRequestClose={handleNavigationDashboard}
       style={styles}
       contentLabel="Example Modal"
     >
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-        <Carousel />
+        <Carousel images={images} />
         <Flex extendedStyles="align-items: stretch; justify-content: space-between;">
           <Flex extendedStyles="flex-direction:column; justify-content: stretch; width: 70%;">
-            {/* {/* <InfoCard /> */}
-
             {firstColumn}
           </Flex>
-          {/* <MovementsCard /> */}
+
           {secondColumn}
         </Flex>
       </div>
@@ -50,6 +54,7 @@ export const PokemonModal = ({ firstColumn, secondColumn }) => {
 };
 
 PokemonModal.propTypes = {
-  firstColumn: PropTypes.string.isRequired,
+  firstColumn: PropTypes.object.isRequired,
   secondColumn: PropTypes.object.isRequired,
+  images: PropTypes.array.isRequired,
 };

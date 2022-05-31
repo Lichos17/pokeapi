@@ -3,11 +3,25 @@ import styled from "styled-components";
 import { Button, Image, TableItem, Text } from "../../atoms";
 import { Flex } from "../../UI-utils";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-export const TableBodyItems = ({ src, alt, pokemonName, abilities, types }) => {
+export const TableBodyItems = ({
+  src,
+  alt,
+  pokemonName,
+  abilities,
+  types,
+  id,
+}) => {
+  let navigate = useNavigate();
+
+  const handleNavigationId = () => {
+    navigate(`/dashboard/${id}`);
+  };
+
   return (
     <tr style={{}}>
-      <TableItem>1</TableItem>
+      <TableItem>{id}</TableItem>
       <TableItem>{pokemonName}</TableItem>
       <TableItem>
         <Image
@@ -34,6 +48,7 @@ export const TableBodyItems = ({ src, alt, pokemonName, abilities, types }) => {
       </TableItem>
       <TableItem extendedStyles="text-align: center;">
         <Button
+          onClick={handleNavigationId}
           extendedStyles="margin: 0 auto;"
           buttonType="primaryButton"
           size="sm"
@@ -57,4 +72,5 @@ TableBodyItems.propTypes = {
   pokemonName: PropTypes.string.isRequired,
   abilities: PropTypes.arrayOf(PropTypes.object),
   types: PropTypes.arrayOf(PropTypes.object),
+  id: PropTypes.number.isRequired,
 };
