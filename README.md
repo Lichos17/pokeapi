@@ -1,6 +1,12 @@
 # test-pokeapi
 
 
+### Pasos
+1. Git clone
+2. yarn install /  npm install
+3. yarn run dev
+
+
 ### Librarias adicionales
 1. Styled components
 2. just-debounce-it
