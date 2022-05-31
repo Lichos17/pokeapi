@@ -6,9 +6,8 @@ import {
   pokemonSlice,
   setSearch,
 } from "./pokemonSlice";
-function paginate(array, page_size, page_number, length) {
-  if (page_number > length) return [];
 
+function paginate(array, page_size, page_number, length) {
   return array.slice((page_number - 1) * page_size, page_number * page_size);
 }
 

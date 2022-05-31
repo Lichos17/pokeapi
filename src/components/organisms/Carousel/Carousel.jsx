@@ -35,7 +35,7 @@ export const Carousel = ({ images }) => {
       />
       <Image
         key={img}
-        extendedStyles="height: 30rem; width: 40%; margin-bottom: 2rem;"
+        extendedStyles="height: 20rem; width: 80%; margin-bottom: 2rem;"
         src={img}
       />
       <CarouselButton

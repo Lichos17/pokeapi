@@ -12,9 +12,18 @@ export const PokemonCard = ({ src, pokemonName, abilities, types, id }) => {
     navigate(`/dashboard/${id}`);
   };
 
+  const handleNavigationImage = () => {
+    navigate(`/dashboard/image/${id}`);
+  };
+
   return (
     <CardContainer as="article">
-      <Image src={src} alt={`${pokemonName} photo`} />
+      <Image
+        onClick={handleNavigationImage}
+        src={src}
+        alt={`${pokemonName} photo`}
+        extendedStyles="cursor:pointer;"
+      />
       <Text as="h3" size="md">
         {pokemonName}
       </Text>

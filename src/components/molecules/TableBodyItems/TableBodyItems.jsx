@@ -18,15 +18,20 @@ export const TableBodyItems = ({
     navigate(`/dashboard/${id}`);
   };
 
+  const handleNavigationImage = () => {
+    navigate(`/dashboard/image/${id}`);
+  };
+
   return (
     <tr style={{}}>
       <TableItem>{id}</TableItem>
       <TableItem>{pokemonName}</TableItem>
       <TableItem>
         <Image
-          extendedStyles="width: 4rem; height: 6rem;"
+          onClick={handleNavigationImage}
           src={src}
-          alt={alt}
+          alt={`${pokemonName} photo`}
+          extendedStyles="width: 4rem; height: 6rem;cursor:pointer;"
         />
       </TableItem>
       <TableItem>

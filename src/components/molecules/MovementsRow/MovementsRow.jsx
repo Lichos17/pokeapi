@@ -1,13 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { Text } from "../../atoms";
 import { Flex, MovementsRowContainer } from "../../UI-utils";
 
-export const MovementsRow = () => {
+export const MovementsRow = ({ power, precisition, type, index }) => {
   return (
     <MovementsRowContainer>
       <Text extendedStyles="margin-bottom: 1rem;" size="sm" weight="bold">
-        Movimiento 1
+        Movimiento {index + 1}
       </Text>
       <Flex>
         <div>
@@ -15,26 +16,33 @@ export const MovementsRow = () => {
             Poder
           </Text>
           <Text size="sm" weight="bold" as="h4" type="secondary">
-            100
+            {power || "-"}
           </Text>
         </div>
         <div>
           <Text size="sm" weight="bold" as="h4" type="secondary">
-            Poder
+            Precision
           </Text>
           <Text size="sm" weight="bold" as="h4" type="secondary">
-            100
+            {precisition || "-"}
           </Text>
         </div>
         <div>
           <Text size="sm" weight="bold" as="h4" type="secondary">
-            Poder
+            Type
           </Text>
           <Text size="sm" weight="bold" as="h4" type="secondary">
-            100
+            {type || "-"}
           </Text>
         </div>
       </Flex>
     </MovementsRowContainer>
   );
+};
+
+MovementsRow.propTypes = {
+  power: PropTypes.string.isRequired,
+  precisition: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
