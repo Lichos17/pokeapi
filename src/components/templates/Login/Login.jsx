@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import { Text } from "../../atoms";
 import { Flex } from "../../UI-utils/Flex";
-import PropTypes from "prop-types";
 
 export const LoginTemplate = ({ title, children }) => {
   return (

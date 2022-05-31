@@ -49,4 +49,4 @@ export const {
   setInitialState,
 } = pokemonSlice.actions;
 
-const initialState = pokemonSlice.getInitialState();
+export const initialState = pokemonSlice.getInitialState();

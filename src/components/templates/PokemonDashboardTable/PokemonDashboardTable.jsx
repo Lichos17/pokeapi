@@ -1,8 +1,7 @@
 import React from "react";
-import { Text } from "../../atoms";
-import { Pagination, PokemonCard } from "../../molecules";
-import { Container, Grid } from "../../UI-utils";
 import PropTypes from "prop-types";
+
+import { Container } from "../../UI-utils";
 
 export const PokemonDashboardTable = ({ Header, Filters, children }) => {
   return (

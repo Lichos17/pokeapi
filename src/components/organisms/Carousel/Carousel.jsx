@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, CarouselButton, Image } from "../../atoms";
-import { Flex } from "../../UI-utils";
 import PropTypes from "prop-types";
+
+import { CarouselButton, Image } from "../../atoms";
+import { Flex } from "../../UI-utils";
 
 export const Carousel = ({ images }) => {
   const [index, setIndex] = useState(0);

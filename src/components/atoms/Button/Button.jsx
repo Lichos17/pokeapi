@@ -22,7 +22,6 @@ const weights = {
 
 export const Button = styled.a`
   background-color: ${(props) => props.theme[props.buttonType].background};
-  color: ${(props) => props.theme[props.buttonType].text};
   border: ${(props) => props.theme[props.buttonType].border};
   border-radius: ${(props) => {
     if (props.buttonType === "navButton") {
@@ -31,10 +30,11 @@ export const Button = styled.a`
       return "0.2rem";
     }
   }};
+  color: ${(props) => props.theme[props.buttonType].text};
+  display: flex;
   font-weight: 200;
   cursor: pointer;
   text-align: center;
-  display: flex;
   justify-content: center;
   align-items: center;
 

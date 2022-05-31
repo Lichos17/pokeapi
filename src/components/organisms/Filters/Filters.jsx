@@ -1,17 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { Button, Input, InputContainer, InputIcon } from "../../atoms";
 import { Flex } from "../../UI-utils";
 import {
-  getPokemons,
-  pokemonSlice,
-  setGrid,
-  setInitialState,
-  setPage,
-  setPokemons,
-  setSearch,
+  changeDisplayFormat,
+  setPokemonSearch,
   setTheme,
 } from "../../../slices";
+
 export const Filters = () => {
   const dispatch = useDispatch();
   const { light, grid } = useSelector((state) => state.ui);
@@ -22,15 +19,11 @@ export const Filters = () => {
   };
 
   const handleDisplayFormatChange = (isGrid) => {
-    dispatch(setInitialState());
-    dispatch(getPokemons());
-    dispatch(setGrid({ grid: isGrid }));
+    dispatch(changeDisplayFormat(isGrid));
   };
 
   const handleInputChange = (e) => {
-    dispatch(setPokemons({ ...pokemonSlice.getInitialState() }));
-    dispatch(setSearch({ search: e.target.value }));
-    dispatch(getPokemons(1));
+    dispatch(setPokemonSearch(e.target.value));
   };
 
   return (

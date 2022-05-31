@@ -1,7 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+
 import { Button, Image, TableItem, Text } from "../../atoms";
-import { Flex } from "../../UI-utils";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
