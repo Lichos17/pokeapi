@@ -1,1 +1,3 @@
-export { counterSlice } from "./counterSlice/counterSlice";
+export * from "./uiSlice";
+export * from "./pokemonSlice";
+export * from "./userSlice";

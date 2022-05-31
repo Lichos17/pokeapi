@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import { PrivateRoutes } from "./PrivateRoutes";
-import { PublicRoutes } from "./PublicRoutes";
+import { PublicRoutes } from "./PublicRoute";
 
 export const MainRouter = () => {
+  const { email } = useSelector((state) => state.user);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<PublicRoutes />} />
-        <Route path="auth/*" element={<PrivateRoutes />} />
+        <Route path="/auth/*" element={<PublicRoutes isAuth={!!email} />} />
+        <Route path="/*" element={<PrivateRoutes isAuth={!!email} />} />
       </Routes>
     </BrowserRouter>
   );

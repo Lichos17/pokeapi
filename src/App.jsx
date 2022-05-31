@@ -1,35 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./assets/theme";
 import { GlobalStyles } from "./assets/globalStyles";
-import { lightTheme, darkTheme } from "./assets/theme";
-import { MainRouter } from "./routers/AppRouter";
-import { getPokemons } from "./slices/pokemonSlice/thunk";
+import { MainRouter } from "./routers";
+import "./global.css";
 
 function App() {
-  const [theme, setTheme] = useState("light");
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
-
-  const dispatch = useDispatch();
-
-  const state = useSelector((state) => state);
-  console.log(state);
-
-  useEffect(() => {
-    console.log("hola");
-    dispatch(getPokemons());
-  }, []);
-
+  const { light } = useSelector((state) => state.ui);
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles />
-        <div className="App">
-          <button onClick={themeToggler}>Switch Theme</button>
-        </div>
-      </>
+    <ThemeProvider theme={light ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <MainRouter />
     </ThemeProvider>
   );
 }
