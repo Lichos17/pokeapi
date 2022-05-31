@@ -19,32 +19,32 @@ export const InfoCardContainer = styledComponents.article`
   }
 `;
 
-export const InfoCard = ({ name, type1, type2, description }) => {
+export const InfoCard = ({ name, types, children }) => {
   return (
     <InfoCardContainer>
       <Flex>
         <Text extendedStyles="flex-grow:1;">{name}</Text>
-        {type1 && (
-          <Text as="p" size="sm" extendedStyles="margin-right: 1rem;">
-            {type1}
-          </Text>
-        )}
-        {type2 && (
-          <Text as="p" size="sm">
-            Tipo
-          </Text>
-        )}
+        {types &&
+          types.map((type) => (
+            <Text
+              extendedStyles="margin-left: 1rem;"
+              key={type.type.name}
+              as="p"
+              size="sm"
+              weight="bold"
+            >
+              {type.type.name}
+            </Text>
+          ))}
       </Flex>
-      <Text extendedStyles="color: #DDE1E7; margin-top: 1rem;" as="p" size="sm">
-        {description}
-      </Text>
+      {children}
     </InfoCardContainer>
   );
 };
 
 InfoCard.propTypes = {
   name: PropTypes.string.isRequired,
-  type1: PropTypes.string,
-  type2: PropTypes.string,
-  description: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf(PropTypes.object),
+
+  children: PropTypes.any,
 };

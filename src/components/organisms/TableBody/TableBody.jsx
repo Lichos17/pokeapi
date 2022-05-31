@@ -17,7 +17,8 @@ export const TableBody = ({ pokemons }) => {
     <TableBodyContainer>
       {pokemons.map((pokemon) => (
         <TableBodyItems
-          key={pokemon.name}
+          id={pokemon.id}
+          key={pokemon.id}
           pokemonName={pokemon.name}
           abilities={pokemon.abilities}
           types={pokemon.types}

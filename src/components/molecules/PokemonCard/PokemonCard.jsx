@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Button, Image, Text } from "../../atoms";
 import { Flex, Grid } from "../../UI-utils";
 import PropTypes from "prop-types";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const CardContainer = styled.div`
   border: 1px solid ${(props) => props.theme.card.borders};
@@ -16,7 +17,13 @@ const CardContainer = styled.div`
   }
 `;
 
-export const PokemonCard = ({ src, pokemonName, abilities, types }) => {
+export const PokemonCard = ({ src, pokemonName, abilities, types, id }) => {
+  let navigate = useNavigate();
+
+  const handleNavigationId = () => {
+    navigate(`/dashboard/${id}`);
+  };
+
   return (
     <CardContainer as="article">
       <Image src={src} alt={`${pokemonName} photo`} />
@@ -58,6 +65,7 @@ export const PokemonCard = ({ src, pokemonName, abilities, types }) => {
           extendedStyles="padding: 0 1rem;"
           size="xs"
           buttonType="primaryButton"
+          onClick={handleNavigationId}
         >
           Shiny
         </Button>
@@ -78,4 +86,5 @@ PokemonCard.propTypes = {
   pokemonName: PropTypes.string.isRequired,
   abilities: PropTypes.arrayOf(PropTypes.object),
   types: PropTypes.arrayOf(PropTypes.object),
+  id: PropTypes.number.isRequired,
 };

@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, CarouselButton, Image } from "../../atoms";
 import { Flex } from "../../UI-utils";
+import PropTypes from "prop-types";
 
-export const Carousel = () => {
-  const images = [
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png",
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png",
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg",
-  ];
-
+export const Carousel = ({ images }) => {
   const [index, setIndex] = useState(0);
   const [img, setImg] = useState(images[index]);
 
@@ -48,4 +43,7 @@ export const Carousel = () => {
       />
     </Flex>
   );
+};
+Carousel.propTypes = {
+  images: PropTypes.array.isRequired,
 };

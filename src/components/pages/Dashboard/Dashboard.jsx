@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, setLimit, setPokemons } from "../../../slices";
-import { Pagination, PokemonCard } from "../../molecules";
+import { getPokemons, setPokemons } from "../../../slices";
+import { Header, Pagination, PokemonCard } from "../../molecules";
 import { Filters, TableBody, TableHead } from "../../organisms";
 import { PokemonDashboardGrid, PokemonDashboardTable } from "../../templates";
 
@@ -17,10 +17,15 @@ export const Dashboard = () => {
   }, []);
 
   return grid ? (
-    <PokemonDashboardGrid title="Pokedex" Filters={<Filters />}>
+    <PokemonDashboardGrid
+      title="Pokédex"
+      Filters={<Filters />}
+      Header={<Header title="Pokédex" />}
+    >
       {pokemons.pokemons.map((pokemon) => (
         <PokemonCard
           key={pokemon.name}
+          id={pokemon.id}
           pokemonName={pokemon.name}
           abilities={pokemon.abilities}
           types={pokemon.types}
@@ -29,7 +34,11 @@ export const Dashboard = () => {
       ))}
     </PokemonDashboardGrid>
   ) : (
-    <PokemonDashboardTable title="Pokedex" Filters={<Filters />}>
+    <PokemonDashboardTable
+      title="Pokédex"
+      Filters={<Filters />}
+      Header={<Header title="Pokédex" />}
+    >
       <table>
         <TableHead />
         <TableBody pokemons={pokemons.pokemons} />

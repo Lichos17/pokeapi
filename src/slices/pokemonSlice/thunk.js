@@ -1,4 +1,4 @@
-import { setPokemons, setPages, setPage } from "./pokemonSlice";
+import { setPokemons, setPages, setPage, setIsLoading } from "./pokemonSlice";
 function paginate(array, page_size, page_number, length) {
   if (page_number > length) return [];
 
@@ -8,9 +8,11 @@ function paginate(array, page_size, page_number, length) {
 export const getPokemons = (page = 1) => {
   return async (dispatch, getState) => {
     try {
+      dispatch(setIsLoading({ isLoading: true }));
       const { pokemons, ui } = getState();
       const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=2000`);
       const data = await resp.json();
+
       const filteredNames = data.results.filter((pokemon) => {
         if (pokemons.search) {
           return pokemon.name.includes(pokemons.search);
@@ -19,11 +21,11 @@ export const getPokemons = (page = 1) => {
         }
       });
 
-      const pages = Math.round(filteredNames.length / 9);
+      const pages = Math.round(filteredNames.length / 16);
       dispatch(setPages({ pages }));
       dispatch(setPage({ page }));
 
-      const filteredPokemons = paginate(filteredNames, 9, page, pages);
+      const filteredPokemons = paginate(filteredNames, 16, page, pages);
 
       const promises = filteredPokemons.map(async (pokemon) => {
         const pokemonResponse = await fetch(pokemon.url);
@@ -42,6 +44,8 @@ export const getPokemons = (page = 1) => {
       } else {
         dispatch(setPokemons({ pokemons: [...results] }));
       }
+
+      dispatch(setIsLoading({ isLoading: false }));
     } catch (err) {}
   };
 };

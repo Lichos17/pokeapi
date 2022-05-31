@@ -7,3 +7,4 @@ export * from "./Image/Image";
 export * from "./TableItem";
 export * from "./TableHeadItem";
 export * from "./CarouselButton";
+export * from "./Spinner";

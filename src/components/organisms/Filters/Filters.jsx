@@ -30,7 +30,7 @@ export const Filters = () => {
   const handleInputChange = (e) => {
     dispatch(setPokemons({ ...pokemonSlice.getInitialState() }));
     dispatch(setSearch({ search: e.target.value }));
-    dispatch(getPokemons());
+    dispatch(getPokemons(1));
   };
 
   return (
@@ -38,6 +38,7 @@ export const Filters = () => {
       <InputContainer>
         <InputIcon className="fas fa-search" />
         <Input
+          valid={true}
           value={search}
           onChange={handleInputChange}
           placeholder="Buscar Pokemon"
