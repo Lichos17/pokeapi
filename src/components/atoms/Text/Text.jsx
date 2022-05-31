@@ -29,7 +29,7 @@ export const Text = styled.p`
     props.type === "primary"
       ? props.theme.text.primary
       : props.theme.text.secondary};
-
+  text-transform: capitalize;
   font-weight: ${(props) => (props.weight === "bold" ? "700" : "400")};
 
   ${(props) => props.extendedStyles && props.extendedStyles}

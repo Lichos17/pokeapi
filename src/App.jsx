@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./assets/theme";
 import { GlobalStyles } from "./assets/globalStyles";
-import { MainRouter } from "./routers/AppRouter";
+import { MainRouter } from "./routers";
 import "./global.css";
 
 function App() {

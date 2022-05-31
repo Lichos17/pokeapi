@@ -8,7 +8,7 @@ export const InfoCard = ({ name, types, children }) => {
   return (
     <InfoCardContainer>
       <Flex>
-        <Text extendedStyles="flex-grow:1;">{name}</Text>
+        <Text extendedStyles="flex-grow:1; margin-bottom: 1rem;">{name}</Text>
         {types &&
           types.map((type) => (
             <Text

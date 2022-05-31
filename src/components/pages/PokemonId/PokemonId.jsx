@@ -9,7 +9,7 @@ import { usePokemonFetch } from "../../../hooks";
 
 export const PokemonId = () => {
   const { id } = useParams();
-  const { pokemon, abilities, setPokemon, setAbilities } = usePokemonFetch(id);
+  const { pokemon, abilities, movesState } = usePokemonFetch(id);
 
   return pokemon && abilities ? (
     <PokemonModal
@@ -33,7 +33,7 @@ export const PokemonId = () => {
           </InfoCard>
         </>
       }
-      secondColumn={<MovementsCard />}
+      secondColumn={<MovementsCard moves={movesState} />}
       images={
         [pokemon.sprites.front_default, pokemon.sprites.front_shiny] || []
       }
