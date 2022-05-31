@@ -9,7 +9,7 @@ export const PrivateRoutes = ({ isAuth }) => {
       <Route path="dashboard" element={<Dashboard />} />
       <Route path="dashboard/:id" element={<PokemonId />} />
       <Route path="dashboard/image/:id" element={<PokemonImages />} />
-      <Route path="*" element={<>not found</>} />
+      <Route path="*" element={<Navigate replace to="/dashboard" />} />
     </Routes>
   ) : (
     <Navigate replace to="auth/login" />
